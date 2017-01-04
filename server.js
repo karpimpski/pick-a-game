@@ -17,11 +17,12 @@ app.get('/:id', (req, res) => {
     var json = JSON.parse(body);
     var games = json.response.games;
     var gameId = _.sample(games).appid;
-    request('http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid='+gameId+'&key='+process.env.API_KEY+'&steamid='+id, (err, response, body) => {
+    console.log(gameId);
+    request('http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key='+apiKey+'&appid='+gameId, (err, response, body) => {
       if(err) throw err;
       var json = JSON.parse(body);
-      var game = json.playerstats.gameName;
-      res.end(game);
+      var game = json.game.gameName;
+      res.end(gameId + '\n' + game);
     });
   })
 });
