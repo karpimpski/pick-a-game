@@ -10,20 +10,15 @@ app.get('/findid/:user', (req, res) => {
     res.end(json.response.steamid);
   })
 });
-app.get('/:id', (req, res) => {
+app.get('/random/:id', (req, res) => {
   var id = req.params.id;
-  request('http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key='+process.env.API_KEY+'&steamid='+id+'&format=json', function (err, response, body) {
+  request('http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key='+process.env.API_KEY+'&steamid='+id+'&format=json&include_appinfo=1&include_played_free_games=1', (err, response, body) => {
     if(err) throw err;
+    console.log('http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key='+process.env.API_KEY+'&steamid='+id+'&format=json&include_appinfo=1&include_played_free_games=1');
     var json = JSON.parse(body);
     var games = json.response.games;
-    var gameId = _.sample(games).appid;
-    console.log(gameId);
-    request('http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key='+apiKey+'&appid='+gameId, (err, response, body) => {
-      if(err) throw err;
-      var json = JSON.parse(body);
-      var game = json.game.gameName;
-      res.end(gameId + '\n' + game);
-    });
+    var game = _.sample(games).name;
+    res.end(game);
   })
 });
 
