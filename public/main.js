@@ -10,7 +10,7 @@ form.addEventListener('submit', (e) => {
     if(this.readyState == 4 && this.status == 200){
       var json = JSON.parse(xhttp.responseText);
       var game = json.game;
-      result.innerHTML = game;
+      result.innerHTML = `You should play ${game}.`;
     }
   };
   xhttp.open("GET", "/random/" + steamid.value, true);
