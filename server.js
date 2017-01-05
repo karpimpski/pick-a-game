@@ -3,6 +3,10 @@ var app = express();
 var request = require('request');
 var _ = require('underscore');
 var apiKey = process.env.API_KEY;
+var favicon = require('serve-favicon');
+var path = require('path');
+
+app.use(favicon(__dirname + '/public/favicon.ico'));
 
 app.use(express.static('public'));
 
