@@ -1,15 +1,20 @@
 <head>
   <title>Find Me A Game!</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link rel='stylesheet' href='main.css'>
 </head>
 
 <body>
   <form id='form'>
-    <input id='steamid'></input>
-    <input type='submit' name='submit' value='Submit'></input>
+    <div class='center row'>
+      <input id='steamid' autocomplete="off"></input>
+      <input type='submit' name='submit' value='Submit' id='submit'></input>
+    </div>
   </form>
 
-  <p id='result'></div>
+  <div class='center row'>
+    <p id='result'></p>
+  </div>
   <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="

@@ -1,3 +1,46 @@
 body{
   background: black;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+.row{
+  display: flex;
+}
+
+.center{
+  justify-content: center;
+}
+
+input{
+  font-family: 'Roboto', sans-serif;
+}
+
+#submit{
+  background: none;
+  border: 2px solid white;
+  color: white;
+  transition: all 0.5s;
+  height: 30px;
+}
+
+#submit:hover{
+  cursor: pointer;
+  background: white;
+  color: black;
+}
+
+#steamid{
+  background: none;
+  border: 2px solid white;
+  border-right: none;
+  color: white;
+  text-align: center;
+}
+#steamid:focus{
+  outline: none;
+}
+
+#submit:focus{
+  outline: none;
 }
