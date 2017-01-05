@@ -1,3 +1,17 @@
-$.get('http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=BD515B8A421E653175305DDCDA2B4BD9&steamid=76561197960434622&format=json', (err, data) => {
-  alert(data);
+var form = document.getElementById('form');
+var steamid = document.getElementById('steamid');
+var result = document.getElementById('result');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if(this.readyState == 4 && this.status == 200){
+      var json = JSON.parse(xhttp.responseText);
+      var game = json.game;
+      result.innerHTML = game;
+    }
+  };
+  xhttp.open("GET", "/random/" + steamid.value, true);
+  xhttp.send();
 });

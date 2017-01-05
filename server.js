@@ -4,6 +4,8 @@ var request = require('request');
 var _ = require('underscore');
 var apiKey = process.env.API_KEY;
 
+app.use(express.static('public'));
+
 app.get('/random/:user', (req, res) => {
   request('http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key='+apiKey+'&vanityurl='+req.params.user, (err, response, body) => {
     if(err) throw err;
@@ -14,7 +16,7 @@ app.get('/random/:user', (req, res) => {
       var json = JSON.parse(body);
       var games = json.response.games;
       var game = _.sample(games).name;
-      res.end(game);
+      res.end(JSON.stringify({'game': game}));
     })
   })
 
