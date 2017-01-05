@@ -12,9 +12,6 @@ form.addEventListener('submit', (e) => {
       var game = json.game;
       result.innerHTML = game;
     }
-    else if(this.status !== 200){
-      result.innerHTML = "Sorry, we couldn't load that profile.";
-    }
   };
   xhttp.open("GET", "/random/" + steamid.value, true);
   xhttp.send();
